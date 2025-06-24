@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 90%;
+    margin: auto;
+    background-color: lightgray;
+}
+
+/* header */
+#head {
+    width: 100%;
+    height: 150px;
+    background-color: bisque;
+    display: flex;
+}
+#head p{
+    font-family: 'brush script mt';
+    font-size: 50px;
+    padding: 40px 0px 0px 50px;  
+}
+#logo{
+    width: 300px;
+}
+#nav{
+    margin: 60px 0px 0px 280px;
+}
+#nav a {
+    text-decoration: none;
+    font-family: lato, sans-serif;
+    font-size: 16px;
+    color: chocolate;
+    padding: 15px 15px 15px 15px;
+}
+#nav a:hover {
+    background-color: white;
+    border-radius: 15px;
+}
+
+/* view content */
+#view-content {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    background-color: bisque;
+}
+#view-content-one{
+    width: 50%;
+    height: 590px;
+}
+#view-content-two {
+    width: 50%;
+    height: 590px;
+}
+#view-content-two img {
+    width: 90%;
+    height: 90%;
+    margin: 20px 10px 0px 0px;
+    border-radius: 15px;
+}
+#view-content-one h1{
+    width: 400px;
+    margin: 95px 0px 0px 75px;
+    font-family: sans-serif;
+    font-size: 40px;
+}
+#view-content-one p {
+    width: 400px;
+    margin: 35px 0px 0px 75px;
+    font-family: sans-serif;
+    font-size: 17px;
+    text-align: justify;
+}
+#view-content-one button {
+    margin: 35px 0px 0px 75px;
+    width: 150px;
+    height: 55px;
+    font-family: sans-serif;
+    font-size: 20px;
+    background-color: whitesmoke;
+    border-color: whitesmoke;
+}
+
+/* food content */
+#food-content {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: bisque;
+}
+#biriyani {
+    width: 30%;
+    height: 500px;
+    margin: 50px 0px 0px 10px;
+}
+#noodles {
+    width: 30%;
+    height: 500px;
+    margin: 50px 0px 0px 10px;
+}
+#pasta {
+    width: 30%;
+    height: 500px;
+    margin: 50px 0px 0px 10px;
+}
+#food-content img {
+    width: 350px;
+    height: 350px;
+}
+#food-content figcaption {
+    width: 350px;
+}
+#food-content h1 {
+    text-align: center;
+}
+
+/* culinary */
+#culinary {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    background-color: bisque;
+}
+#culinary-content-two{
+    width: 50%;
+    height: 590px;
+}
+#culinary-content-one {
+    width: 50%;
+    height: 590px;
+}
+#culinary-content-one img {
+    width: 655px;
+    height: 550px;
+    margin: 20px 0px 0px 10px;
+    border-radius: 15px;
+}
+#culinary-content-two h1{
+    width: 400px;
+    text-align: center;
+    margin: 95px 0px 0px 75px;
+    font-family: sans-serif;
+    font-size: 40px;
+}
+#culinary-content-two p {
+    width: 450px;
+    margin: 35px 0px 0px 75px;
+    font-family: sans-serif;
+    font-size: 17px;
+    text-align: justify;
+}
+#culinary-content-two button {
+    margin: 35px 0px 0px 75px;
+    width: 150px;
+    height: 55px;
+    font-family: sans-serif;
+    font-size: 20px;
+    background-color: whitesmoke;
+    border-color: whitesmoke;
+}
+
+/* contact */
+#contact {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    background-color: bisque;
+}
+#timing{
+    width: 30%;
+    height: 350px;
+    margin: 30px 0px 0px 10px;
+    padding: 30px;
+    font-family: sans-serif;
+    font-size: 15px;
+    text-align: justify;
+}
+#location{
+    margin: 40px 40px 0px 0px;
+}
+
+/* footer */
+#foot {
+    width: 100%;
+    height: 300px;
+    background-color: lightgray;
+}
+#foot p{
+    font-family: 'brush script mt';
+    font-size: 50px;
+    padding: 40px 0px 0px 50px;  
+}
+#foot-upper {
+    display: flex;
+}
+#foot-upper p {
+    width: 300px;
+}
+#foot-upper span {
+    padding: 50px;
+    width: 200px;
+    font-size: 19px;
+    font-family: sans-serif;
+}
+#foot-upper input {
+    width: 400px;
+    height: 50px;
+    margin: 50px 0px 0px 140px;
+    border-radius: 30px;
+}
+#foot-upper button {
+    width: 120px;
+    height: 50px;
+    margin: 50px 10px;
+    background-color: rgb(97, 48, 13);
+    color: white;
+    font-size: 16px;
+}
+#foot-lower {
+    margin-top: 20px;
+}
+#foot-lower span {
+    padding: 50px;
+    font-family: sans-serif;
+    font-size: 13px;
+}
