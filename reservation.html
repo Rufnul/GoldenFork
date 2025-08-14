@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reservation</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- header -->
+    <div id="head">
+      <img src="./Assets/goldenfork-removebg-preview.png" alt="goldenfork" />
+      <div id="logo">
+        <p><a href="./index.html">Golden Fork</a></p>
+      </div>
+      <div id="nav">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="happyHours.html">Happy Hour</a>
+        <a href="contact.html">Contact</a>
+        <a href="reservation.html">Reservation</a>
+      </div>
+    </div>
+    <hr />
+
+    <div id="outer-div">
+    <!-- reserve -->
+
+    <div id="reservation">
+      <section>
+        <h2>For Reservation</h2>
+        <form>
+          <input type="text" id="name" required placeholder="Enter Name..." />
+
+          <input
+            type="email"
+            id="email"
+            required
+            placeholder="Enter Your Email..."
+          />
+
+          <input
+            type="tel"
+            id="phone"
+            required
+            placeholder="Enter Your Phone Number..."
+          />
+
+          <input type="date" id="date" required />
+
+          <input type="time" id="time" required />
+
+          <input
+            type="number"
+            id="guests"
+            required
+            min="1"
+            max="12"
+            placeholder="Enter No. of Guests..."
+          />
+
+          <button type="submit" id="reserve-btn">Submit</button>
+        </form>
+      </section>
+    </div>
+    <!-- contact info -->
+    <div id="contact">
+      <div id="timing">
+        <h2>Restaurant Information</h2>
+        <br />
+        <p>
+          <strong>Hours of Operation:</strong>
+          Open daily<br /><br />
+          <strong>Monday to Thursday</strong> — 12:00 PM to 1:00 AM<br /><br />
+          <strong>Friday to Sunday</strong> — 12:00 PM to 2:00 AM
+        </p>
+      </div>
+
+      <div id="info">
+        <h2>Contact Information</h2>
+        <br />
+        <p>
+          <strong>Phone:</strong> +91-9876543210<br /><br />
+          <strong>Email:</strong> goldenforkchennai@example.com<br /><br />
+          <strong>Address:</strong> Golden Fork Rooftop, Anna Salai, Chennai
+        </p>
+      </div>
+      <div id="location">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3071.793858503201!2d80.27584541349302!3d13.064098937098452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1750762708267!5m2!1sen!2sin"
+          width="300"
+          height="200"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+    <hr>
+    </div>
+    </div>
+
+    <!-- footer -->
+    <hr />
+    <div id="foot">
+      <div id="foot-upper">
+        <p>Golden Fork</p>
+        <span>Restaurent with best<br />view in chennai</span>
+        <input type="text" placeholder="Enter Your Email to get updates,,," />
+        <button>Subscribe</button>
+      </div>
+      <hr id="horizontal" />
+      <div id="foot-lower">
+        <span>Reservation Policy | © 2025 All Rights Reserved<br /></span>
+        <span>Designed & Powered By <strong>Rufnul Afrideen</strong></span>
+      </div>
+    </div>
+  </body>
+</html>
