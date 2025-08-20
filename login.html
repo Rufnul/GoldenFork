@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login • Golden Fork</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="golden-fork-app.js" defer></script>
+</head>
+<body>
+  <!-- header -->
+    <div id="head">
+      <img src="./Assets/goldenfork-removebg-preview.png" alt="goldenfork" />
+      <div id="logo">
+        <p><a href="./index.html">Golden Fork</a></p>
+      </div>
+      <div id="nav">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="happyHours.html">Happy Hour</a>
+        <a href="contact.html">Contact</a>
+        <a href="reservation.html">Reservation</a>
+        <a href="cart.html" class="active">Orders</a>
+      </div>
+    </div>
+    <hr/>
+
+  <section id="auth">
+    <form id="auth-form">
+      <h1 class="auth-title">Login</h1>
+
+      <div class="auth-name-wrap">
+        <label for="auth-name">Full Name</label>
+        <input id="auth-name" type="text" placeholder="Your name"/>
+      </div>
+
+      <label for="auth-email">Email</label>
+      <input id="auth-email" type="email" placeholder="you@example.com" required/>
+
+      <label for="auth-password">Password</label>
+      <input id="auth-password" type="password" placeholder="••••••" required/>
+
+      <button type="submit">Login</button>
+
+      <p class="auth-toggle-text">
+        <a id="toggle-auth-mode" href="#">New here? Sign up</a>
+      </p>
+    </form>
+  </section>
+
+  <!-- footer -->
+    <div id="foot">
+      <div id="foot-upper">
+        <p id="footer-logo">Golden Fork</p>
+        <span>Restaurent with best<br />view in chennai</span>
+        <input type="text" id="emailInput" placeholder="Enter Your Email to get updates..." />
+        <button onClick="subscribe()">Subscribe</button>
+      </div>
+      <hr id="horizontal" />
+      <div id="foot-lower">
+        <span>Reservation Policy | © 2025 All Rights Reserved<br /></span>
+        <span>Designed & Powered By <strong>Rufnul Afrideen</strong></span>
+      </div>
+    </div>
+  </div>
+  <script src="golden-fork-app.js"></script>
+</body>
+</html>

@@ -15,12 +15,13 @@
         <p><a href="./index.html">Golden Fork</a></p>
       </div>
       <div id="nav">
-        <a href="index.html">Home</a>
+        <a href="index.html" class="active-link">Home</a>
         <a href="menu.html">Menu</a>
         <a href="gallery.html">Gallery</a>
         <a href="happyHours.html">Happy Hour</a>
         <a href="contact.html">Contact</a>
         <a href="reservation.html">Reservation</a>
+        <a href="cart.html" class="active">Orders</a>
       </div>
     </div>
     <hr />
@@ -106,7 +107,7 @@
     <!-- contact info -->
     <div id="contact">
       <div id="timing">
-        <h2>Restaurant Information</h2>
+        <h2>Restaurant Info</h2>
         <br />
         <p>
           <strong>Hours of Operation:</strong>
@@ -117,7 +118,7 @@
       </div>
 
       <div id="info">
-        <h2>Contact Information</h2>
+        <h2>Contact Info</h2>
         <br />
         <p>
           <strong>Phone:</strong> +91-9876543210<br /><br />
@@ -144,8 +145,8 @@
       <div id="foot-upper">
         <p id="footer-logo">Golden Fork</p>
         <span>Restaurent with best<br />view in chennai</span>
-        <input type="text" placeholder="Enter Your Email to get updates,,," />
-        <button>Subscribe</button>
+        <input type="text" id="emailInput" placeholder="Enter Your Email to get updates..." />
+        <button onClick="subscribe()">Subscribe</button>
       </div>
       <hr id="horizontal" />
       <div id="foot-lower">
@@ -154,4 +155,6 @@
       </div>
     </div>
   </body>
+  <script src="golden-fork-app.js"></script>
+
 </html>

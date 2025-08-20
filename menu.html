@@ -15,242 +15,252 @@
       </div>
       <div id="nav">
         <a href="index.html">Home</a>
-        <a href="menu.html">Menu</a>
+        <a href="menu.html" class="active-link">Menu</a>
         <a href="gallery.html">Gallery</a>
         <a href="happyHours.html">Happy Hour</a>
         <a href="contact.html">Contact</a>
         <a href="./reservation.html">Reservation</a>
+        <a href="./cart.html">Orders</a>
       </div>
     </div>
     <hr />
 
     <div id="outer-div">
-    <div id="menu-gallery">
-      <!-- South Indian -->
-      <figure class="menu-item">
-        <img src="./Assets/idly.jpg" alt="Idli" />
-        <figcaption>
-          <h2>Idli (2pcs)</h2>
-          <p>Soft steamed rice cakes served with chutney and sambar.</p>
-          <span class="price">₹60</span>
-        </figcaption>
-      </figure>
+      <div id="menu-gallery">
+        <!-- South Indian -->
+        <figure class="menu-item">
+          <img src="./Assets/idly.jpg" alt="Idli" />
+          <figcaption>
+            <h2>Idli (2pcs)</h2>
+            <p>Soft steamed rice cakes served with chutney and sambar.</p>
+            <span class="price">₹60</span>
+            <button onclick="addToCart('Idli', 60, '../Assets/idly.jpg')" class="add-to-cart">Add to Cart</button>
+          </figcaption>
+        </figure>
 
-      <figure class="menu-item">
-        <img src="./Assets/dosa.jpg" alt="Masala Dosa" />
-        <figcaption>
-          <h2>Masala Dosa</h2>
-          <p>
-            Crispy dosa filled with spiced potato masala, served with chutneys.
-          </p>
-          <span class="price">₹90</span>
-        </figcaption>
-      </figure>
+        <figure class="menu-item">
+          <img src="./Assets/dosa.jpg" alt="Masala Dosa" />
+          <figcaption>
+            <h2>Masala Dosa</h2>
+            <p>Crispy dosa filled with spiced potato masala, served with chutneys.</p>
+            <span class="price">₹90</span>
+            <button onclick="addToCart('Masala Dosa', 90, '../Assets/dosa.jpg')" class="add-to-cart">Add to Cart</button>
+          </figcaption>
+        </figure>
 
-      <figure class="menu-item">
-        <img src="./Assets/IMG_20250626_134209.jpg" alt="Kothu Parotta" />
-        <figcaption>
-          <h2>Kothu Parotta</h2>
-          <p>Shredded parotta tossed with spices, egg, and gravy.</p>
-          <span class="price">₹140</span>
-        </figcaption>
-      </figure>
+        <figure class="menu-item">
+          <img src="./Assets/IMG_20250626_134209.jpg" alt="Kothu Parotta" />
+          <figcaption>
+            <h2>Kothu Parotta</h2>
+            <p>Shredded parotta tossed with spices, egg, and gravy.</p>
+            <span class="price">₹140</span>
+            <button onclick="addToCart('Kothu Parotta', 140, '../Assets/IMG_20250626_134209.jpg')" class="add-to-cart">Add to Cart</button>
+          </figcaption>
+        </figure>
 
-      <!-- Biryani -->
-      <figure class="menu-item">
-        <img src="./Assets/rice.jpg" alt="Mutton Biryani" />
-        <figcaption>
-          <h2>Mutton Biryani</h2>
-          <p>Authentic Chennai-style biryani, rich in spices and flavors.</p>
-          <span class="price">₹250</span>
-        </figcaption>
-      </figure>
+        <!-- Biryani -->
+        <figure class="menu-item">
+          <img src="./Assets/rice.jpg" alt="Mutton Biryani" />
+          <figcaption>
+            <h2>Mutton Biryani</h2>
+            <p>Authentic Chennai-style biryani, rich in spices and flavors.</p>
+            <span class="price">₹250</span>
+            <button onclick="addToCart('Mutton Biryani', 250, '../Assets/rice.jpg')" class="add-to-cart">Add to Cart</button>
+          </figcaption>
+        </figure>
 
-      <figure class="menu-item">
-        <img src="./Assets/chicken biriyani.jpg" alt="Chicken Biryani" />
-        <figcaption>
-          <h2>Chicken Biryani</h2>
-          <p>
-            Delicious dum biryani made with aromatic basmati rice and chicken.
-          </p>
-          <span class="price">₹220</span>
-        </figcaption>
-      </figure>
+        <figure class="menu-item">
+          <img src="./Assets/chicken biriyani.jpg" alt="Chicken Biryani" />
+          <figcaption>
+            <h2>Chicken Biryani</h2>
+            <p>Delicious dum biryani made with aromatic basmati rice and chicken.</p>
+            <span class="price">₹220</span>
+            <button onclick="addToCart('Chicken Biryani', 220, '../Assets/chicken biriyani.jpg')" class="add-to-cart">Add to Cart</button>
+          </figcaption>
+        </figure>
 
-      <figure class="menu-item">
-        <img src="./Assets/veg rice.jpg" alt="Veg Biryani" />
-        <figcaption>
-          <h2>Veg Biryani</h2>
-          <p>
-            Flavorful biryani cooked with garden-fresh vegetables and spices.
-          </p>
-          <span class="price">₹180</span>
-        </figcaption>
-      </figure>
+        <figure class="menu-item">
+          <img src="./Assets/veg rice.jpg" alt="Veg Biryani" />
+          <figcaption>
+            <h2>Veg Biryani</h2>
+            <p>Flavorful biryani cooked with garden-fresh vegetables and spices.</p>
+            <span class="price">₹180</span>
+            <button onclick="addToCart('Veg Biryani', 180, '../Assets/veg rice.jpg')" class="add-to-cart">Add to Cart</button>
+          </figcaption>
+        </figure>
 
-      <!-- Asian -->
-      <figure class="menu-item">
-        <img src="./Assets/noodles.jpg" alt="Hakka Noodles" />
-        <figcaption>
-          <h2>Hakka Noodles</h2>
-          <p>Stir-fried noodles with fresh veggies and Asian sauces.</p>
-          <span class="price">₹180</span>
-        </figcaption>
-      </figure>
+        <!-- Asian -->
+        <figure class="menu-item">
+          <img src="./Assets/noodles.jpg" alt="Hakka Noodles" />
+          <figcaption>
+            <h2>Hakka Noodles</h2>
+            <p>Stir-fried noodles with fresh veggies and Asian sauces.</p>
+            <span class="price">₹180</span>
+            <button onclick="addToCart('Hakka Noodles', 180, '../Assets/noodles.jpg')" class="add-to-cart">Add to Cart</button>
+          </figcaption>
+        </figure>
 
-      <figure class="menu-item">
-        <img src="./Assets/rice.jpg" alt="Fried Rice" />
-        <figcaption>
-          <h2>Veg Fried Rice</h2>
-          <p>Perfectly stir-fried rice with fresh vegetables and soy sauce.</p>
-          <span class="price">₹170</span>
-        </figcaption>
-      </figure>
+        <figure class="menu-item">
+          <img src="./Assets/rice.jpg" alt="Fried Rice" />
+          <figcaption>
+            <h2>Veg Fried Rice</h2>
+            <p>Perfectly stir-fried rice with fresh vegetables and soy sauce.</p>
+            <span class="price">₹170</span>
+            <button onclick="addToCart('Veg Fried Rice', 170, '../Assets/rice.jpg')" class="add-to-cart">Add to Cart</button>
+          </figcaption>
+        </figure>
 
-      <figure class="menu-item">
-        <img src="./Assets/pasta.jpg" alt="Cheese Pasta" />
-        <figcaption>
-          <h2>Cheese Pasta</h2>
-          <p>Creamy pasta with rich cheese and Italian herbs.</p>
-          <span class="price">₹220</span>
-        </figcaption>
-      </figure>
+        <figure class="menu-item">
+          <img src="./Assets/pasta.jpg" alt="Cheese Pasta" />
+          <figcaption>
+            <h2>Cheese Pasta</h2>
+            <p>Creamy pasta with rich cheese and Italian herbs.</p>
+            <span class="price">₹220</span>
+            <button onclick="addToCart('Cheese Pasta', 220, '../Assets/pasta.jpg')" class="add-to-cart">Add to Cart</button>
+          </figcaption>
+        </figure>
 
-      <!-- Starters -->
-      <figure class="menu-item">
-        <img src="./Assets/chicken 65.png" alt="Chicken 65" />
-        <figcaption>
-          <h2>Chicken 65</h2>
-          <p>
-            Crispy, spicy deep-fried chicken marinated with southern spices.
-          </p>
-          <span class="price">₹150</span>
-        </figcaption>
-      </figure>
+        <!-- Starters -->
+        <figure class="menu-item">
+          <img src="./Assets/chicken 65.png" alt="Chicken 65" />
+          <figcaption>
+            <h2>Chicken 65</h2>
+            <p>Crispy, spicy deep-fried chicken marinated with southern spices.</p>
+            <span class="price">₹150</span>
+            <button onclick="addToCart('Chicken 65', 150, '../Assets/chicken 65.png')" class="add-to-cart">Add to Cart</button>
+          </figcaption>
+        </figure>
 
-      <figure class="menu-item">
-        <img src="./Assets/gobi.jpeg" alt="Gobi Manchurian" />
-        <figcaption>
-          <h2>Gobi Manchurian</h2>
-          <p>Crispy cauliflower tossed in Indo-Chinese sauce.</p>
-          <span class="price">₹140</span>
-        </figcaption>
-      </figure>
+        <figure class="menu-item">
+          <img src="./Assets/gobi.jpeg" alt="Gobi Manchurian" />
+          <figcaption>
+            <h2>Gobi Manchurian</h2>
+            <p>Crispy cauliflower tossed in Indo-Chinese sauce.</p>
+            <span class="price">₹140</span>
+            <button onclick="addToCart('Gobi Manchurian', 140, '../Assets/gobi.jpeg')" class="add-to-cart">Add to Cart</button>
+          </figcaption>
+        </figure>
 
-      <figure class="menu-item">
-        <img src="./Assets/roll.jpg" alt="Spring Roll" />
-        <figcaption>
-          <h2>Spring Roll</h2>
-          <p>Golden-fried rolls stuffed with fresh vegetables or chicken.</p>
-          <span class="price">₹130</span>
-        </figcaption>
-      </figure>
+        <figure class="menu-item">
+          <img src="./Assets/roll.jpg" alt="Spring Roll" />
+          <figcaption>
+            <h2>Spring Roll</h2>
+            <p>Golden-fried rolls stuffed with fresh vegetables or chicken.</p>
+            <span class="price">₹130</span>
+            <button onclick="addToCart('Spring Roll', 130, '../Assets/roll.jpg')" class="add-to-cart">Add to Cart</button>
+          </figcaption>
+        </figure>
 
-      <!-- Desserts -->
-      <figure class="menu-item">
-        <img src="./Assets/jamun.jpg" alt="Gulab Jamun" />
-        <figcaption>
-          <h2>Gulab Jamun (2pcs)</h2>
-          <p>Soft, juicy milk dumplings soaked in sugar syrup.</p>
-          <span class="price">₹70</span>
-        </figcaption>
-      </figure>
+        <!-- Desserts -->
+        <figure class="menu-item">
+          <img src="./Assets/jamun.jpg" alt="Gulab Jamun" />
+          <figcaption>
+            <h2>Gulab Jamun (2pcs)</h2>
+            <p>Soft, juicy milk dumplings soaked in sugar syrup.</p>
+            <span class="price">₹70</span>
+            <button onclick="addToCart('Gulab Jamun (2pcs)', 70, '../Assets/jamun.jpg')" class="add-to-cart">Add to Cart</button>
+          </figcaption>
+        </figure>
 
-      <figure class="menu-item">
-        <img src="./Assets/payasam.jpg" alt="Payasam" />
-        <figcaption>
-          <h2>Payasam</h2>
-          <p>Traditional South Indian dessert with vermicelli and milk.</p>
-          <span class="price">₹80</span>
-        </figcaption>
-      </figure>
+        <figure class="menu-item">
+          <img src="./Assets/payasam.jpg" alt="Payasam" />
+          <figcaption>
+            <h2>Payasam</h2>
+            <p>Traditional South Indian dessert with vermicelli and milk.</p>
+            <span class="price">₹80</span>
+            <button onclick="addToCart('Payasam', 80, '../Assets/payasam.jpg')" class="add-to-cart">Add to Cart</button>
+          </figcaption>
+        </figure>
 
-      <figure class="menu-item">
-        <img src="./Assets/falooda.jpg" alt="Falooda" />
-        <figcaption>
-          <h2>Falooda</h2>
-          <p>Refreshing dessert with ice cream, vermicelli, and rose syrup.</p>
-          <span class="price">₹120</span>
-        </figcaption>
-      </figure>
+        <figure class="menu-item">
+          <img src="./Assets/falooda.jpg" alt="Falooda" />
+          <figcaption>
+            <h2>Falooda</h2>
+            <p>Refreshing dessert with ice cream, vermicelli, and rose syrup.</p>
+            <span class="price">₹120</span>
+            <button onclick="addToCart('Falooda', 120, '../Assets/falooda.jpg')" class="add-to-cart">Add to Cart</button>
+          </figcaption>
+        </figure>
 
-      <!-- Beverages -->
-      <figure class="menu-item">
-        <img src="./Assets/filtercoffee.jpg" alt="Filter Coffee" />
-        <figcaption>
-          <h2>Filter Coffee</h2>
-          <p>Classic South Indian coffee brewed to perfection.</p>
-          <span class="price">₹40</span>
-        </figcaption>
-      </figure>
+        <!-- Beverages -->
+        <figure class="menu-item">
+          <img src="./Assets/filtercoffee.jpg" alt="Filter Coffee" />
+          <figcaption>
+            <h2>Filter Coffee</h2>
+            <p>Classic South Indian coffee brewed to perfection.</p>
+            <span class="price">₹40</span>
+            <button onclick="addToCart('Filter Coffee', 40, '../Assets/filtercoffee.jpg')" class="add-to-cart">Add to Cart</button>
+          </figcaption>
+        </figure>
 
-      <figure class="menu-item">
-        <img src="./Assets/fresh_juice.jpeg" alt="Fresh Juice" />
-        <figcaption>
-          <h2>Fresh Juice</h2>
-          <p>Choice of watermelon, orange, lemon, or pineapple.</p>
-          <span class="price">₹70</span>
-        </figcaption>
-      </figure>
+        <figure class="menu-item">
+          <img src="./Assets/fresh_juice.jpeg" alt="Fresh Juice" />
+          <figcaption>
+            <h2>Fresh Juice</h2>
+            <p>Choice of watermelon, orange, lemon, or pineapple.</p>
+            <span class="price">₹70</span>
+            <button onclick="addToCart('Fresh Juice', 70, '../Assets/fresh_juice.jpeg')" class="add-to-cart">Add to Cart</button>
+          </figcaption>
+        </figure>
 
-      <figure class="menu-item">
-        <img src="./Assets/rose_milk.jpeg" alt="Rose Milk" />
-        <figcaption>
-          <h2>Rose Milk</h2>
-          <p>Sweet chilled milk flavored with rose syrup.</p>
-          <span class="price">₹60</span>
-        </figcaption>
-      </figure>
-    </div>
-
-    <div>
-      <hr />
-    </div>
-
-    <!-- contact info -->
-    <div id="contact">
-      <div id="timing">
-        <h2>Restaurant Information</h2>
-        <br />
-        <p>
-          <strong>Hours of Operation:</strong>
-          Open daily<br /><br />
-          <strong>Monday to Thursday</strong> — 12:00 PM to 1:00 AM<br /><br />
-          <strong>Friday to Sunday</strong> — 12:00 PM to 2:00 AM
-        </p>
+        <figure class="menu-item">
+          <img src="./Assets/rose_milk.jpeg" alt="Rose Milk" />
+          <figcaption>
+            <h2>Rose Milk</h2>
+            <p>Sweet chilled milk flavored with rose syrup.</p>
+            <span class="price">₹60</span>
+            <button onclick="addToCart('Rose Milk', 60, '../Assets/rose_milk.jpeg')" class="add-to-cart">Add to Cart</button>
+          </figcaption>
+        </figure>
       </div>
 
-      <div id="info">
-        <h2>Contact Information</h2>
-        <br />
-        <p>
-          <strong>Phone:</strong> +91-9876543210<br /><br />
-          <strong>Email:</strong> goldenforkchennai@example.com<br /><br />
-          <strong>Address:</strong> Golden Fork Rooftop, Anna Salai, Chennai
-        </p>
+      <div>
+        <hr />
       </div>
-      <div id="location">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3071.793858503201!2d80.27584541349302!3d13.064098937098452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1750762708267!5m2!1sen!2sin"
-          width="300"
-          height="200"
-          style="border: 0"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
+
+      <!-- contact info -->
+      <div id="contact">
+        <div id="timing">
+          <h2>Restaurant Information</h2>
+          <br />
+          <p>
+            <strong>Hours of Operation:</strong>
+            Open daily<br /><br />
+            <strong>Monday to Thursday</strong> — 12:00 PM to 1:00 AM<br /><br />
+            <strong>Friday to Sunday</strong> — 12:00 PM to 2:00 AM
+          </p>
+        </div>
+
+        <div id="info">
+          <h2>Contact Information</h2>
+          <br />
+          <p>
+            <strong>Phone:</strong> +91-9876543210<br /><br />
+            <strong>Email:</strong> goldenforkchennai@example.com<br /><br />
+            <strong>Address:</strong> Golden Fork Rooftop, Anna Salai, Chennai
+          </p>
+        </div>
+        <div id="location">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3071.793858503201!2d80.27584541349302!3d13.064098937098452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1750762708267!5m2!1sen!2sin"
+            width="300"
+            height="200"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
       </div>
-    </div>
-    </div>
     </div>
 
     <!-- footer -->
-     <hr />
+    <hr />
     <div id="foot">
       <div id="foot-upper">
         <p>Golden Fork</p>
-        <span>Restaurent with best<br />view in chennai</span>
-        <input type="text" placeholder="Enter Your Email to get updates,,," />
+        <span>Restaurant with best<br />view in Chennai</span>
+        <input type="text" placeholder="Enter Your Email to get updates..." />
         <button>Subscribe</button>
       </div>
       <hr id="horizontal" />
@@ -260,4 +270,5 @@
       </div>
     </div>
   </body>
+  <script src="golden-fork-app.js"></script>
 </html>
