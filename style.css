@@ -1354,3 +1354,22 @@ body {
   color: chocolate;
   text-decoration: none;
 }
+
+
+
+/* login form */
+.auth-name-wrap {
+  display: none; /* hidden by default, toggle via JS for signup mode */
+}
+
+.error {
+  color: red;
+  font-size: 0.9em;
+  display: none; /* hidden initially */
+}
+
+.form-msg {
+  display: none;
+  font-size: 0.9em;
+  margin-top: 5px;
+}

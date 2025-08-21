@@ -1,417 +1,302 @@
+//navbar toggle function
 function toggleMenu() {
   const nav = document.getElementById('nav');
   nav.classList.toggle('active');
 }
 
-(function () {
-  const LS_KEYS = {
-    USER: 'GF_USER', // currently logged-in user
-    USERS: 'GF_USERS', // registered users by email
-    RESERVATIONS: 'GF_RESERVATIONS',
-    CONTACTS: 'GF_CONTACTS',
-    SUBSCRIBERS: 'GF_SUBSCRIBERS'
-  };
+// Cart functionality
 
-  const q = (sel, root = document) => root.querySelector(sel);
-  const qa = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+// Add item to cart and save in localStorage
+function addToCart(name, price, imagePath) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  const storage = {
-    get(key, fallback) {
-      try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; }
-    },
-    set(key, val) {
-      localStorage.setItem(key, JSON.stringify(val));
-    },
-    remove(key) { localStorage.removeItem(key); }
-  };
+  // check if product already exists
+  let existing = cart.find(item => item.name === name);
 
-  const auth = {
-    current() {
-      return storage.get(LS_KEYS.USER, null);
-    },
-    isLoggedIn() { return !!this.current(); },
-    users() { return storage.get(LS_KEYS.USERS, {}); },
-    saveUsers(map) { storage.set(LS_KEYS.USERS, map); },
-
-    signup({ name, email, password }) {
-      email = email.trim().toLowerCase();
-      const users = this.users();
-      if (users[email]) throw new Error('Email already registered. Please log in.');
-      users[email] = { name, email, password }; // NOTE: demo only; plaintext
-      this.saveUsers(users);
-      storage.set(LS_KEYS.USER, { name, email });
-      return { name, email };
-    },
-
-    login({ email, password }) {
-      email = email.trim().toLowerCase();
-      const users = this.users();
-      const u = users[email];
-      if (!u) throw new Error('No account found for this email. Please sign up.');
-      if (u.password !== password) throw new Error('Invalid password.');
-      storage.set(LS_KEYS.USER, { name: u.name, email: u.email });
-      return { name: u.name, email: u.email };
-    },
-
-    logout() { storage.remove(LS_KEYS.USER); }
-  };
-
-  const utils = {
-    todayStr() {
-      const dt = new Date();
-      const y = dt.getFullYear();
-      const m = String(dt.getMonth() + 1).padStart(2, '0');
-      const d = String(dt.getDate()).padStart(2, '0');
-      return `${y}-${m}-${d}`;
-    },
-    isValidEmail(email) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
-    },
-    flash(el, msg, type = 'info', ms = 3000) {
-      if (!el) return;
-      el.textContent = msg;
-      el.className = `flash ${type}`;
-      el.style.display = 'block';
-      setTimeout(() => { el.style.display = 'none'; }, ms);
-    },
-    redirect(url) { window.location.href = url; },
-    getQueryParam(name) { return new URLSearchParams(window.location.search).get(name); }
-  };
-
-  function initNav() {
-    const nav = q('#nav');
-    if (!nav) return;
-    // Mark active link
-    const path = window.location.pathname.split('/').pop() || 'index.html';
-    qa('a', nav).forEach(a => {
-      const href = a.getAttribute('href');
-    });
-
-    // Add Login/Logout link dynamically (last item)
-    let authLink = q('#nav .auth-link');
-    if (!authLink) {
-      authLink = document.createElement('a');
-      authLink.className = 'auth-link';
-      nav.appendChild(authLink);
-    }
-    const user = auth.current();
-    if (user) {
-      authLink.textContent = `Logout (${user.name.split(' ')[0]})`;
-      authLink.href = '#logout';
-      authLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        auth.logout();
-        // After logout, if on reservation page, send to login
-        const isReservation = /reservation\.html$/i.test(window.location.pathname);
-        utils.redirect(isReservation ? 'login.html' : window.location.href);
-      }, { once: true });
-    } else {
-      authLink.textContent = 'Login';
-      authLink.href = 'login.html?redirect=' + encodeURIComponent(window.location.pathname.split('/').pop() || 'index.html');
-    }
-  }
-
-  function initFooterSubscribe() {
-    const container = q('#foot-upper');
-    if (!container) return;
-    const input = q('input[type="text"]', container);
-    const btn = q('button', container);
-    if (!input || !btn) return;
-
-    btn.addEventListener('click', () => {
-      const email = input.value.trim();
-      if (!utils.isValidEmail(email)) { alert('Please enter a valid email.'); return; }
-      const subs = storage.get(LS_KEYS.SUBSCRIBERS, []);
-      if (subs.includes(email)) { alert('You are already subscribed!'); return; }
-      subs.push(email);
-      storage.set(LS_KEYS.SUBSCRIBERS, subs);
-      alert('Subscribed! You will receive updates soon.');
-      input.value = '';
-    });
-  }
-
-  function initContactForm() {
-    const form = q('#contact-page .contact-form form');
-    if (!form) return;
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = q('#contact-page #name')?.value?.trim() || q('#contact-page input[name="name"]')?.value?.trim();
-      const email = q('#contact-page #email')?.value?.trim() || q('#contact-page input[type="email"]')?.value?.trim();
-      const message = q('#contact-page #message')?.value?.trim();
-      if (!name || !utils.isValidEmail(email) || !message) {
-        alert('Please fill out name, a valid email, and message.');
-        return;
-      }
-      const contacts = storage.get(LS_KEYS.CONTACTS, []);
-      contacts.push({ name, email, message, ts: new Date().toISOString() });
-      storage.set(LS_KEYS.CONTACTS, contacts);
-      alert('Message sent! We will get back to you soon.');
-      form.reset();
-    });
-  }
-
-  function initReservationForm() {
-    const section = q('#reservation');
-    if (!section) return;
-    const form = q('#reservation form');
-    if (!form) return;
-
-    const dateInput = q('#date', form);
-    if (dateInput) dateInput.min = utils.todayStr();
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (!auth.isLoggedIn()) {
-        const back = encodeURIComponent('reservation.html');
-        alert('Please login to make a reservation. Redirecting to login...');
-        utils.redirect(`login.html?redirect=${back}`);
-        return;
-      }
-
-      const name = q('#name', form)?.value.trim();
-      const email = q('#email', form)?.value.trim();
-      const phone = q('#phone', form)?.value.trim();
-      const date = q('#date', form)?.value;
-      const time = q('#time', form)?.value;
-      const guests = parseInt(q('#guests', form)?.value, 10);
-
-      if (!name || !utils.isValidEmail(email) || !/^\d{10}$/.test(phone || '')) {
-        alert('Please enter a valid name, 10-digit phone number, and email.');
-        return;
-      }
-      if (!date || !time || !(guests >= 1 && guests <= 12)) {
-        alert('Please select date, time, and guests between 1 and 12.');
-        return;
-      }
-
-      const res = storage.get(LS_KEYS.RESERVATIONS, []);
-      res.push({ name, email, phone, date, time, guests, by: auth.current(), ts: new Date().toISOString() });
-      storage.set(LS_KEYS.RESERVATIONS, res);
-
-      alert('Reservation received! We\'ll confirm shortly by email.');
-      form.reset();
-    });
-  }
-
-  function initGalleryLightbox() {
-    const grid = q('.gallery-grid');
-    if (!grid) return;
-
-    // Simple lightbox
-    const overlay = document.createElement('div');
-    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.8);display:none;align-items:center;justify-content:center;z-index:9999;';
-    const img = document.createElement('img');
-    img.style.cssText = 'max-width:90%;max-height:90%;border-radius:12px;';
-    overlay.appendChild(img);
-    overlay.addEventListener('click', () => overlay.style.display = 'none');
-    document.body.appendChild(overlay);
-
-    qa('img', grid).forEach(i => {
-      i.style.cursor = 'zoom-in';
-      i.addEventListener('click', () => {
-        img.src = i.src;
-        overlay.style.display = 'flex';
-      });
-    });
-  }
-
-  function initLoginPage() {
-    const form = q('#auth-form');
-    if (!form) return; // not on login page
-
-    const nameWrap = q('.auth-name-wrap');
-    const title = q('.auth-title');
-    const toggle = q('#toggle-auth-mode');
-    let mode = 'login'; // or 'signup'
-
-    function render() {
-      if (title) title.textContent = mode === 'login' ? 'Login' : 'Create Account';
-      if (nameWrap) nameWrap.style.display = mode === 'signup' ? 'block' : 'none';
-      const submit = q('button[type="submit"]', form);
-      if (submit) submit.textContent = mode === 'login' ? 'Login' : 'Sign Up';
-      if (toggle) toggle.textContent = mode === 'login' ? 'New here? Sign up' : 'Have an account? Login';
-    }
-
-    render();
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = q('#auth-name')?.value?.trim();
-      const email = q('#auth-email')?.value?.trim();
-      const password = q('#auth-password')?.value || '';
-
-      if (!utils.isValidEmail(email)) { alert('Enter a valid email.'); return; }
-      if (!password || password.length < 6) { alert('Password must be at least 6 characters.'); return; }
-
-      try {
-        if (mode === 'signup') {
-          if (!name || name.length < 2) { alert('Enter your full name.'); return; }
-          auth.signup({ name, email, password });
-        } else {
-          auth.login({ email, password });
-        }
-      } catch (err) {
-        alert(err.message || 'Something went wrong.');
-        return;
-      }
-
-      // Redirect back if provided
-      const redirect = utils.getQueryParam('redirect') || 'index.html';
-      utils.redirect(redirect);
-    });
-
-    if (toggle) {
-      toggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        mode = mode === 'login' ? 'signup' : 'login';
-        render();
-      });
-    }
-  }
-
-  function bootstrap() {
-    initNav();
-    initFooterSubscribe();
-    initContactForm();
-    initReservationForm();
-    initGalleryLightbox();
-    initLoginPage();
-
-    // Expose for debugging
-    window.GF = { auth, storage, utils };
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bootstrap);
+  if (existing) {
+    existing.quantity += 1;
   } else {
-    bootstrap();
+    cart.push({
+      name: name,
+      price: price,
+      quantity: 1,
+      image: imagePath // save image path
+    });
   }
-})();
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  const messageSpan = document.getElementById("cartMessage");
+  if (messageSpan) {
+    messageSpan.style.color = "green";
+    messageSpan.textContent = `${name} added to your cart!`;
+    setTimeout(() => { messageSpan.textContent = ""; }, 3000);
+  }
+
+  loadCart();
+}
+
+// Load and display cart
+function loadCart() {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let cartItemsContainer = document.getElementById("cart-items");
+  let cartTotal = 0;
+
+  cartItemsContainer.innerHTML = "";
+
+  if (cart.length === 0) {
+    cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+    document.getElementById("cart-total").innerText = "0";
+    return;
+  }
+
+  cart.forEach((item, index) => {
+    let itemTotal = item.price * item.quantity;
+    cartTotal += itemTotal;
+
+    let cartItem = document.createElement("div");
+    cartItem.classList.add("cart-item");
+
+    cartItem.innerHTML = `
+      <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+      <span class="cart-item-name">${item.name}</span>
+      <span class="cart-item-price">₹${item.price}</span>
+      <div class="quantity-controls">
+        <button class="quantity-btn" onclick="decreaseQuantity(${index})">-</button>
+        <span>${item.quantity}</span>
+        <button class="quantity-btn" onclick="increaseQuantity(${index})">+</button>
+      </div>
+      <span class="cart-item-total">₹${itemTotal}</span>
+      <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+    `;
+
+    cartItemsContainer.appendChild(cartItem);
+  });
+
+  document.getElementById("cart-total").innerText = cartTotal;
+}
+
+// Quantity +/- 
+function increaseQuantity(index) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart[index].quantity += 1;
+  localStorage.setItem("cart", JSON.stringify(cart));
+  loadCart();
+}
+
+function decreaseQuantity(index) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  if (cart[index].quantity > 1) {
+    cart[index].quantity -= 1;
+  } else {
+    cart.splice(index, 1);
+  }
+  localStorage.setItem("cart", JSON.stringify(cart));
+  loadCart();
+}
+
+// Remove item
+function removeItem(index) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  loadCart();
+}
+
+// Checkout / Place Order
+function checkoutCart() {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const messageSpan = document.getElementById("cartMessage");
+
+  if (cart.length === 0) {
+    messageSpan.style.color = "red";
+    messageSpan.textContent = "Your cart is empty!";
+    return;
+  }
+
+  messageSpan.style.color = "green";
+  messageSpan.textContent = "Thank you for your order! 🎉";
+  
+  // Clear cart
+  localStorage.removeItem("cart");
+  loadCart();
+
+  // Clear message after 5 seconds
+  setTimeout(() => { messageSpan.textContent = ""; }, 5000);
+}
+
+// Toggle mobile menu
+function toggleMenu() {
+  const nav = document.getElementById('nav');
+  nav.classList.toggle('show');
+}
+
+// Load cart on page ready
+if (document.getElementById("cart-items")) {
+  window.onload = loadCart;
+}
 
 
 
 
- // Cart functionality
-    // ✅ Add item to cart and save in localStorage
-    function addToCart(name, price, imagePath) {
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+//footer email validation and subscription
+const emailInput = document.getElementById('emailInput');
+const subscribeBtn = document.getElementById('subscribeBtn');
+const emailError = document.getElementById('emailError');
+const emailSuccess = document.getElementById('emailSuccess');
 
-      // check if product already exists
-      let existing = cart.find(item => item.name === name);
+function isValidEmail(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
 
-      if (existing) {
-        existing.quantity += 1;
-      } else {
-        cart.push({
-          name: name,
-          price: price,
-          quantity: 1,
-          image: imagePath // save image path
-        });
-      }
+subscribeBtn.addEventListener('click', () => {
+  const email = emailInput.value.trim();
 
-      localStorage.setItem("cart", JSON.stringify(cart));
-      alert(`${name} added to your cart!`);
+  if (!email) {
+    emailError.textContent = 'Email is required.';
+    emailError.style.display = 'block';
+    emailSuccess.style.display = 'none';
+    return;
+  }
+
+  if (!isValidEmail(email)) {
+    emailError.textContent = 'Please enter a valid email.';
+    emailError.style.display = 'block';
+    emailSuccess.style.display = 'none';
+    return;
+  }
+
+  // Success
+  emailSuccess.textContent = 'Thank you for subscribing!';
+  emailSuccess.style.display = 'block';
+  emailError.style.display = 'none';
+  emailInput.value = '';
+});
+
+
+//footer email validation and subscription ends
+
+// login form validation
+
+const LS_KEYS = { USER: 'GF_USER', USERS: 'GF_USERS' };
+const storage = {
+  get(key, fallback) { try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; } },
+  set(key, val) { localStorage.setItem(key, JSON.stringify(val)); },
+  remove(key) { localStorage.removeItem(key); }
+};
+const auth = {
+  users() { return storage.get(LS_KEYS.USERS, {}); },
+  saveUsers(users) { storage.set(LS_KEYS.USERS, users); },
+  signup({ name, email, password }) {
+    email = email.trim().toLowerCase();
+    const users = this.users();
+    if (users[email]) throw new Error('Email already registered. Please log in.');
+    users[email] = { name, email, password };
+    this.saveUsers(users);
+    storage.set(LS_KEYS.USER, { name, email });
+  },
+  login({ email, password }) {
+    email = email.trim().toLowerCase();
+    const users = this.users();
+    const u = users[email];
+    if (!u) throw new Error('No account found. Please sign up.');
+    if (u.password !== password) throw new Error('Invalid password.');
+    storage.set(LS_KEYS.USER, { name: u.name, email: u.email });
+  }
+};
+function isValidEmailInput(email) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
+
+function initAuthForm() {
+  const form = document.querySelector('#auth-form');
+  if (!form) return;
+
+  const nameWrap = document.querySelector('.auth-name-wrap');
+  const nameInput = document.querySelector('#auth-name');
+  const emailInput = document.querySelector('#auth-email');
+  const passwordInput = document.querySelector('#auth-password');
+  const toggleLink = document.querySelector('#toggle-auth-mode');
+  const title = document.querySelector('.auth-title');
+  const nameError = document.querySelector('#nameError');
+  const emailError = document.querySelector('#emailError');
+  const passwordError = document.querySelector('#passwordError');
+  const formMessage = document.querySelector('#formMessage');
+
+  let mode = 'login'; // login or signup
+
+  function render() {
+    title.textContent = mode === 'login' ? 'Login' : 'Create Account';
+    nameWrap.style.display = mode === 'signup' ? 'block' : 'none';
+    form.querySelector('button[type="submit"]').textContent = mode === 'login' ? 'Login' : 'Sign Up';
+    toggleLink.textContent = mode === 'login' ? 'New here? Sign up' : 'Have an account? Login';
+    nameError.style.display = 'none';
+    emailError.style.display = 'none';
+    passwordError.style.display = 'none';
+    formMessage.style.display = 'none';
+  }
+
+  render();
+
+  toggleLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    mode = mode === 'login' ? 'signup' : 'login';
+    render();
+  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    let hasError = false;
+    if (mode === 'signup' && (!name || name.length < 2)) { nameError.textContent = 'Enter your full name.'; nameError.style.display = 'block'; hasError = true; } else nameError.style.display = 'none';
+    if (!email || !isValidEmailInput(email)) { emailError.textContent = 'Enter a valid email.'; emailError.style.display = 'block'; hasError = true; } else emailError.style.display = 'none';
+    if (!password || password.length < 6) { passwordError.textContent = 'Password must be at least 6 characters.'; passwordError.style.display = 'block'; hasError = true; } else passwordError.style.display = 'none';
+    if (hasError) return;
+
+    try {
+      if (mode === 'signup') auth.signup({ name, email, password });
+      else auth.login({ email, password });
+
+      formMessage.textContent = mode === 'signup' ? 'Account created successfully!' : 'Login successful!';
+      formMessage.style.color = 'green';
+      formMessage.style.display = 'block';
+
+      updateNavbarAuth(); // update navbar immediately
+      setTimeout(() => { window.location.href = 'index.html'; }, 1000);
+    } catch (err) {
+      formMessage.textContent = err.message;
+      formMessage.style.color = 'red';
+      formMessage.style.display = 'block';
     }
+  });
+}
+document.addEventListener('DOMContentLoaded', initAuthForm);
 
-    // ✅ Load and display cart
-    function loadCart() {
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      let cartItemsContainer = document.getElementById("cart-items");
-      let cartTotal = 0;
+// ====================== NAVBAR LOGIN/LOGOUT ======================
+function updateNavbarAuth() {
+  const navLogin = document.querySelector('#nav a[href="login.html"]');
+  const currentUser = JSON.parse(localStorage.getItem('GF_USER'));
+  if (!navLogin) return;
 
-      cartItemsContainer.innerHTML = "";
+  navLogin.replaceWith(navLogin.cloneNode(true)); // Remove old event listeners
+  const newNavLogin = document.querySelector('#nav a[href="login.html"]');
 
-      if (cart.length === 0) {
-        cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
-        document.getElementById("cart-total").innerText = "0";
-        return;
-      }
+  if (currentUser) {
+    newNavLogin.textContent = `Logout (${currentUser.name})`;
+    newNavLogin.href = '#';
+    newNavLogin.addEventListener('click', (e) => {
+      e.preventDefault();
+      localStorage.removeItem('GF_USER');
+      updateNavbarAuth();
+      alert('You have been logged out.');
+      window.location.reload();
+    });
+  } else {
+    newNavLogin.textContent = 'Login';
+    newNavLogin.href = 'login.html';
+  }
+}
+document.addEventListener('DOMContentLoaded', updateNavbarAuth);
 
-      cart.forEach((item, index) => {
-        let itemTotal = item.price * item.quantity;
-        cartTotal += itemTotal;
-
-        let cartItem = document.createElement("div");
-        cartItem.classList.add("cart-item");
-
-        cartItem.innerHTML = `
-          <img src="${item.image}" alt="${item.name}" class="cart-item-img">
-          <span class="cart-item-name">${item.name}</span>
-          <span class="cart-item-price">₹${item.price}</span>
-          <div class="quantity-controls">
-            <button class="quantity-btn" onclick="decreaseQuantity(${index})">-</button>
-            <span>${item.quantity}</span>
-            <button class="quantity-btn" onclick="increaseQuantity(${index})">+</button>
-          </div>
-          <span class="cart-item-total">₹${itemTotal}</span>
-          <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
-        `;
-
-        cartItemsContainer.appendChild(cartItem);
-      });
-
-      document.getElementById("cart-total").innerText = cartTotal;
-    }
-
-    // ✅ Quantity +/-
-    function increaseQuantity(index) {
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart[index].quantity += 1;
-      localStorage.setItem("cart", JSON.stringify(cart));
-      loadCart();
-    }
-
-    function decreaseQuantity(index) {
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      if (cart[index].quantity > 1) {
-        cart[index].quantity -= 1;
-      } else {
-        cart.splice(index, 1);
-      }
-      localStorage.setItem("cart", JSON.stringify(cart));
-      loadCart();
-    }
-
-    // ✅ Remove item
-    function removeItem(index) {
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart.splice(index, 1);
-      localStorage.setItem("cart", JSON.stringify(cart));
-      loadCart();
-    }
-
-    // ✅ Checkout
-    function checkoutCart() {
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      if (cart.length === 0) {
-        alert("Your cart is empty!");
-        return;
-      }
-      alert("Thank you for your order! 🎉");
-      localStorage.removeItem("cart");
-      loadCart();
-    }
-
-    // Toggle mobile menu
-    function toggleMenu() {
-      const nav = document.getElementById('nav');
-      nav.classList.toggle('show');
-    }
-
-    // Subscribe function
-    function subscribe() {
-      const email = document.getElementById('emailInput').value;
-      if (email && email.includes('@')) {
-        alert('Thank you for subscribing!');
-        document.getElementById('emailInput').value = '';
-      } else {
-        alert('Please enter a valid email address.');
-      }
-    }
-
-    // Load cart on page ready
-    if (document.getElementById("cart-items")) {
-      window.onload = loadCart;
-    }
+// login form validation ends

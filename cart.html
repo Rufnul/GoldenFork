@@ -24,27 +24,31 @@
           <a href="happyHours.html">Happy Hour</a>
           <a href="reservation.html">Reservation</a>
           <a href="cart.html" class="active">Orders</a>
+          <a href="login.html">Login</a>
         </div>
     </div>
     <hr id="horizontal">
 
- <!-- Cart Section -->
-  <section class="cart-container">
-    <h1>Your Orders</h1>
-    <div id="cart-items"></div>
-    <div class="cart-summary">
-      <p>Total: ₹<span id="cart-total">0</span></p>
-      <button onclick="checkoutCart()">Place Order</button>
-    </div>
-  </section>
+<!-- Cart Section -->
+<section class="cart-container">
+  <h1>Your Orders</h1>
+  <div id="cart-items"></div>
+  <div class="cart-summary">
+    <p>Total: ₹<span id="cart-total">0</span></p>
+    <span id="cartMessage" style="color:green; font-size:0.9em; display:block; margin-top:4px;"></span>
+    <button id="checkoutBtn" onclick="checkoutCart()">Place Order</button>
+  </div>
+</section>
 
   <!-- footer -->
     <div id="foot">
       <div id="foot-upper">
         <p id="footer-logo">Golden Fork</p>
-        <span>Restaurent with best<br />view in chennai</span>
+        <span>Restaurant with best<br />view in Chennai</span>
         <input type="text" id="emailInput" placeholder="Enter Your Email to get updates..." />
-        <button onClick="subscribe()">Subscribe</button>
+        <button id="subscribeBtn">Subscribe</button>
+        <span id="emailError" style="color:red; display:block; font-size:0.9em; margin-top:4px;"></span>
+        <span id="emailSuccess" style="color:green; display:block; font-size:0.9em; margin-top:4px;"></span>
       </div>
       <hr id="horizontal" />
       <div id="foot-lower">
@@ -52,6 +56,7 @@
         <span>Designed & Powered By <strong>Rufnul Afrideen</strong></span>
       </div>
     </div>
+      
 
   <script src="golden-fork-app.js"></script>
 </body>
