@@ -9,22 +9,25 @@
   </head>
   <body>
     <!-- header -->
-    <div id="head">
+    <div class="main">
+      <div id="head">
       <img src="./Assets/goldenfork-removebg-preview.png" alt="goldenfork" />
       <div id="logo">
         <p><a href="./index.html">Golden Fork</a></p>
       </div>
-      <div id="nav">
-        <a href="index.html" class="active-link">Home</a>
-        <a href="menu.html">Menu</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="happyHours.html">Happy Hour</a>
-        <a href="contact.html">Contact</a>
-        <a href="reservation.html">Reservation</a>
-        <a href="cart.html" class="active">Orders</a>
-      </div>
+      <!-- Hamburger Icon -->
+        <div id="hamburger" onclick="toggleMenu()">☰</div>
+
+        <div id="nav">
+          <a href="index.html" class="active-link">Home</a>
+          <a href="menu.html">Menu</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="happyHours.html">Happy Hour</a>
+          <a href="reservation.html">Reservation</a>
+          <a href="cart.html" class="active">Orders</a>
+        </div>
     </div>
-    <hr />
+    <hr id="hr-main" />
     
     <!-- content 1 -->
      <div id="outer-div">
@@ -44,6 +47,7 @@
         <img src="./Assets/goodview.jpg" alt="Good view" />
       </section>
     </div>
+    <hr id="horizontal-line" />
 
     <!-- content 2 -->
     <h1 id="notation">Taste the World on Your Plate</h1>
@@ -79,6 +83,7 @@
         </figcaption>
       </figure>
     </div>
+    <hr id="horizontal-line" />
 
     <!-- culinary -->
 
@@ -102,7 +107,7 @@
         </p>
       </section>
     </div>
-    <hr />
+    <hr id="horizontal-line" />
     
     <!-- contact info -->
     <div id="contact">
@@ -138,8 +143,10 @@
         ></iframe>
       </div>
     </div>
-    <hr>
+    <hr id="hr-main">
     </div>
+    </div>
+    
     <!-- footer -->
     <div id="foot">
       <div id="foot-upper">

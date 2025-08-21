@@ -13,17 +13,19 @@
       <div id="logo">
         <p><a href="./index.html">Golden Fork</a></p>
       </div>
-      <div id="nav">
-        <a href="index.html">Home</a>
-        <a href="menu.html" class="active-link">Menu</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="happyHours.html">Happy Hour</a>
-        <a href="contact.html">Contact</a>
-        <a href="./reservation.html">Reservation</a>
-        <a href="./cart.html">Orders</a>
-      </div>
+      <!-- Hamburger Icon -->
+        <div id="hamburger" onclick="toggleMenu()">☰</div>
+
+        <div id="nav">
+          <a href="index.html">Home</a>
+          <a href="menu.html" class="active-link">Menu</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="happyHours.html">Happy Hour</a>
+          <a href="reservation.html">Reservation</a>
+          <a href="cart.html" class="active">Orders</a>
+        </div>
     </div>
-    <hr />
+    <hr id="hr-main">
 
     <div id="outer-div">
       <div id="menu-gallery">
@@ -255,13 +257,13 @@
     </div>
 
     <!-- footer -->
-    <hr />
+    <hr id="hr-main">
     <div id="foot">
       <div id="foot-upper">
-        <p>Golden Fork</p>
-        <span>Restaurant with best<br />view in Chennai</span>
-        <input type="text" placeholder="Enter Your Email to get updates..." />
-        <button>Subscribe</button>
+        <p id="footer-logo">Golden Fork</p>
+        <span>Restaurent with best<br />view in chennai</span>
+        <input type="text" id="emailInput" placeholder="Enter Your Email to get updates..." />
+        <button onClick="subscribe()">Subscribe</button>
       </div>
       <hr id="horizontal" />
       <div id="foot-lower">
