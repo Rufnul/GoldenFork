@@ -56,7 +56,7 @@ function loadCart() {
     let cartItem = document.createElement("div");
     cartItem.classList.add("cart-item");
 
-    cartItem.innerHTML = `
+   cartItem.innerHTML = `
       <img src="${item.image}" alt="${item.name}" class="cart-item-img">
       <span class="cart-item-name">${item.name}</span>
       <span class="cart-item-price">₹${item.price}</span>
@@ -300,3 +300,22 @@ function updateNavbarAuth() {
 document.addEventListener('DOMContentLoaded', updateNavbarAuth);
 
 // login form validation ends
+
+
+// go to top button
+// Show button when user scrolls down
+window.onscroll = function() { scrollFunction() };
+
+function scrollFunction() {
+  const goTopBtn = document.getElementById("goTopBtn");
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    goTopBtn.style.display = "block";
+  } else {
+    goTopBtn.style.display = "none";
+  }
+}
+
+// Scroll to top smoothly
+function goToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}

@@ -24,7 +24,7 @@
           <a href="gallery.html">Gallery</a>
           <a href="happyHours.html">Happy Hour</a>
           <a href="reservation.html">Reservation</a>
-          <a href="cart.html" class="active">Orders</a>
+          <a href="cart.html" class="active">My Orders</a>
           <a href="login.html">Login</a>
         </div>
     </div>
@@ -111,39 +111,59 @@
     <hr id="horizontal-line" />
     
     <!-- contact info -->
-    <div id="contact">
-      <div id="timing">
-        <h2>Restaurant Info</h2>
-        <br />
-        <p>
-          <strong>Hours of Operation:</strong>
-          Open daily<br /><br />
-          <strong>Monday to Thursday</strong> — 12:00 PM to 1:00 AM<br /><br />
-          <strong>Friday to Sunday</strong> — 12:00 PM to 2:00 AM
-        </p>
+      <div id="contact">
+        <!-- Restaurant Timing -->
+        <div id="timing">
+          <h2>Restaurant Info</h2>
+          <table>
+            <tr>
+              <td><strong>Hours of Operation:</strong></td>
+              <td>Open daily</td>
+            </tr>
+            <tr>
+              <td><strong>Monday to Thursday: </strong></td>
+              <td>12:00 PM – 1:00 AM</td>
+            </tr>
+            <tr>
+              <td><strong>Friday to Sunday: </strong></td>
+              <td>12:00 PM – 2:00 AM</td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- Contact Details -->
+        <div id="info">
+          <h2>Contact Info</h2>
+          <table>
+            <tr>
+              <td><strong>Phone:</strong></td>
+              <td>+91-9876543210</td>
+            </tr>
+            <tr>
+              <td><strong>Email:</strong></td>
+              <td>goldenforkchennai@example.com</td>
+            </tr>
+            <tr>
+              <td><strong>Address:</strong></td>
+              <td>Golden Fork, Anna Salai, Chennai</td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- Google Map -->
+        <div id="location">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3071.793858503201!2d80.27584541349302!3d13.064098937098452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1750762708267!5m2!1sen!2sin"
+            width="300"
+            height="200"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
       </div>
 
-      <div id="info">
-        <h2>Contact Info</h2>
-        <br />
-        <p>
-          <strong>Phone:</strong> +91-9876543210<br /><br />
-          <strong>Email:</strong> goldenforkchennai@example.com<br /><br />
-          <strong>Address:</strong> Golden Fork Rooftop, Anna Salai, Chennai
-        </p>
-      </div>
-      <div id="location">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3071.793858503201!2d80.27584541349302!3d13.064098937098452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1750762708267!5m2!1sen!2sin"
-          width="300"
-          height="200"
-          style="border: 0"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
-      </div>
-    </div>
     <hr id="hr-main">
     </div>
     </div>
@@ -165,7 +185,7 @@
       </div>
     </div>
 
-    
+    <button id="goTopBtn" onclick="goToTop()">↑</button>
   </body>
   <script src="golden-fork-app.js"></script>
 

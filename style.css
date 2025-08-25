@@ -416,7 +416,7 @@ body {
 #info,
 #location {
   flex: 1 1 300px;
-  max-width: 300px;
+  max-width: 330px;
   padding: 20px;
   background-color: transparent;
 }
@@ -426,7 +426,6 @@ body {
   font-family: 'Brush Script MT', cursive;
   font-size: clamp(1.5rem, 4vw, 2rem);
   margin-bottom: 15px;
-  text-align: center;
 }
 
 #timing p,
@@ -557,7 +556,7 @@ body {
 
         #horizontal-line {
             border: none;
-            height: 1px;
+            height: 2px;
             background: linear-gradient(to right, transparent, crimson, transparent);
             margin: 20px 0;
         }
@@ -1372,4 +1371,29 @@ body {
   display: none;
   font-size: 0.9em;
   margin-top: 5px;
+}
+
+/* Go to Top button styles */
+#goTopBtn {
+  display: none; 
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background: Chocolate; /* Golden color */
+  color: white;
+  cursor: pointer;
+  padding: 12px 18px;
+  border-radius: 25%;
+  font-size: 18px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+#goTopBtn:hover {
+  background: white; /* Darker gold */
+  color: chocolate;
+  transform: scale(1.1);
 }
