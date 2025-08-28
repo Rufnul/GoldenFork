@@ -181,9 +181,11 @@ body {
 
 #nav a.login {
   background: #DC143C;
-  color: whitesmoke;  /* Contrast text */
+  color: whitesmoke;
+  /* Contrast text */
   padding: 10px 20px;
-  border-radius: 25px; /* pill shape */
+  border-radius: 25px;
+  /* pill shape */
   font-weight: bold;
   box-shadow: 0 4px 10px rgba(255, 215, 0, 0.4);
   transition: all 0.3s ease;
@@ -837,20 +839,22 @@ body {
 }
 
 .add-to-cart {
-  background-color: crimson;
-  margin: 5px;
-  color: white;
-  font-weight: bold;
+  margin-top: 5px;
+  padding: 15px 30px;
+  border-radius: 30px;
+  font-weight: 600;
+  background: linear-gradient(to right, #d4af37, #f4d47f);
+  color: #272523;
   border: none;
-  border-radius: 12px;
-  padding: 10px 20px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .add-to-cart:hover {
-  background-color: rgba(228, 14, 64, 0.816);
-  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(to right, #f4d47f, #d4af37);
 }
 
 /* Gallery Page Styles */
@@ -1450,13 +1454,27 @@ body {
   padding: 12px 20px;
   border-radius: 8px;
   font-size: 16px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   animation: fadeInOut 3s ease forwards;
 }
 
 @keyframes fadeInOut {
-  0% { opacity: 0; transform: translateY(-10px); }
-  10% { opacity: 1; transform: translateY(0); }
-  90% { opacity: 1; }
-  100% { opacity: 0; transform: translateY(-10px); }
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
 }
