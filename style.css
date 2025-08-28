@@ -92,17 +92,17 @@ body {
 
 #logo a {
   text-decoration: none;
-  color: #FFD700;
+  color: #E6E8FA;
   font-family: 'Brush Script MT', cursive;
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: 65px;
   margin-bottom: 10px;
   transition: all 0.3s ease;
   display: inline-block;
 }
 
 #logo a:hover {
-  color: rgba(255, 217, 0, 0.693);
-  text-shadow: 2px 2px 8px rgba(212, 175, 55, 0.4);
+  color: #E6E8FA;
+  text-shadow: 2px 2px 8px goldenrod;
   transform: translateY(-2px);
 }
 
@@ -155,7 +155,7 @@ body {
   left: 0;
   right: 0;
   height: 3px;
-  background-color: #d4af37;
+  background-color: #DC143C;
   transform: scaleX(0);
   transform-origin: bottom right;
   transition: transform 0.3s ease;
@@ -173,14 +173,14 @@ body {
 }
 
 #nav a.active-link {
-  color: #9B111E;
+  color: #FFD700;
   font-weight: bold;
 }
 
 /* login */
 
 #nav a.login {
-  background: crimson;
+  background: #DC143C;
   color: whitesmoke;  /* Contrast text */
   padding: 10px 20px;
   border-radius: 25px; /* pill shape */
@@ -192,9 +192,9 @@ body {
 /* Hover effect */
 #nav a.login:hover {
   background: rgba(255, 255, 255, 0.864);
-  color: crimson;
+  color: #DC143C;
   transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(255, 215, 0, 0.6);
+  box-shadow: 0 6px 15px #DC143C;
 }
 
 /* login ends */
@@ -505,8 +505,8 @@ body {
 #footer-logo {
   font-family: 'Brush Script MT', cursive;
   font-size: clamp(2.5rem, 5vw, 3.5rem);
-  color: #d4af37;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  color: #E6E8FA;
+  text-shadow: 2px 2px 4px crimson;
   margin-right: 20px;
 }
 
@@ -1068,7 +1068,7 @@ body {
   max-width: 1000px;
   margin: 40px auto;
   padding: 25px;
-  background-color: #fff;
+  background-color: beige;
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
@@ -1142,7 +1142,7 @@ body {
 }
 
 .quantity-btn {
-  background: #f0f0f0;
+  background: #c0c0c064;
   border: none;
   width: 32px;
   height: 32px;
@@ -1169,7 +1169,7 @@ body {
 
 .cart-item-total {
   font-weight: 700;
-  color: #333;
+  color: crimson;
   font-size: 18px;
 }
 
@@ -1433,4 +1433,30 @@ body {
   /* Darker gold */
   color: chocolate;
   transform: scale(1.1);
+}
+
+/* Popup Notification */
+.popup {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: #333;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  animation: fadeInOut 3s ease forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-10px); }
 }

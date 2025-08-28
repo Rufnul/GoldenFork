@@ -14,15 +14,17 @@ function addToCart(name, price, imagePath) {
   let existing = cart.find(item => item.name === name);
 
   if (existing) {
-    existing.quantity += 1;
-  } else {
-    cart.push({
-      name: name,
-      price: price,
-      quantity: 1,
-      image: imagePath // save image path
-    });
-  }
+  existing.quantity += 1;
+  showPopup("Already Added...");
+} else {
+  cart.push({
+    name: name,
+    price: price,
+    quantity: 1,
+    image: imagePath
+  });
+  showPopup("Item Added Successfully...");
+}
 
   localStorage.setItem("cart", JSON.stringify(cart));
   const messageSpan = document.getElementById("cartMessage");
@@ -33,6 +35,18 @@ function addToCart(name, price, imagePath) {
   }
 
   loadCart();
+}
+
+function showPopup(message) {
+  const popup = document.getElementById("popup");
+  const popupMsg = document.getElementById("popup-message");
+
+  popupMsg.textContent = message;
+  popup.style.display = "block";
+
+  setTimeout(() => {
+    popup.style.display = "none";
+  }, 3000); // hides after 3 sec
 }
 
 // Load and display cart
