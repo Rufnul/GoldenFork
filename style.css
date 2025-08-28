@@ -271,6 +271,7 @@ body {
 #view-content-one h1 {
   font-family: 'Brush Script MT', cursive;
   font-size: clamp(2rem, 4vw, 3rem);
+  text-shadow: 1px 1px 16px chocolate;
   /* Responsive font size */
   margin-bottom: 20px;
   text-align: center;
@@ -314,6 +315,7 @@ body {
   font-size: clamp(2rem, 4vw, 3rem);
   margin: 40px 0 20px 0;
   font-family: 'Brush Script MT', cursive;
+  text-shadow: 1px 1px 16px chocolate;
 }
 
 #food-content {
@@ -397,6 +399,7 @@ body {
 #culinary-content-two h1 {
   font-family: 'Brush Script MT', cursive;
   font-size: clamp(2rem, 4vw, 3rem);
+  text-shadow: 1px 1px 16px chocolate;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -452,6 +455,7 @@ body {
   font-family: 'Brush Script MT', cursive;
   font-size: clamp(1.5rem, 4vw, 2rem);
   margin-bottom: 15px;
+  text-shadow: 1px 1px 16px chocolate;
 }
 
 #timing p,
@@ -508,7 +512,7 @@ body {
   font-family: 'Brush Script MT', cursive;
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   color: #E6E8FA;
-  text-shadow: 2px 2px 4px crimson;
+  text-shadow: 1px 1px 16px crimson;
   margin-right: 20px;
 }
 
@@ -708,9 +712,10 @@ body {
 
 #reservation h2 {
   font-family: 'Brush Script MT', cursive;
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-size: 40px;
   text-align: center;
   margin-bottom: 30px;
+  text-shadow: 1px 1px 16px chocolate;
 }
 
 #reservation form {
@@ -777,6 +782,7 @@ body {
 
 /* menu page */
 /* Menu Gallery */
+
 #menu-gallery {
   width: 100%;
   margin: auto;
@@ -869,6 +875,7 @@ body {
   font-family: 'brush script mt';
   font-size: 40px;
   color: #3e2723;
+  text-shadow: 1px 1px 16px chocolate;
   margin-bottom: 30px;
 }
 
@@ -908,8 +915,9 @@ body {
 
 .happy-title {
   font-family: 'brush script mt';
-  font-size: 45px;
+  font-size: 40px;
   color: #3e2723;
+  text-shadow: 1px 1px 16px chocolate;
   margin-bottom: 10px;
 }
 
@@ -1072,7 +1080,7 @@ body {
   max-width: 1000px;
   margin: 40px auto;
   padding: 25px;
-  background-color: beige;
+  background-color: bisque;
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
@@ -1081,7 +1089,9 @@ body {
   text-align: center;
   margin-bottom: 30px;
   color: #333;
-  font-size: 32px;
+  font-family: 'brush script mt';
+  text-shadow: 1px 1px 16px chocolate;
+  font-size: 40px;
   position: relative;
   padding-bottom: 15px;
 }
@@ -1340,9 +1350,9 @@ body {
 .auth-title {
   text-align: center;
   margin-bottom: 25px;
-  color: chocolate;
+  text-shadow: 1px 1px 16px chocolate;
   font-family: 'Brush Script MT', cursive;
-  font-size: 35px;
+  font-size: 40px;
 }
 
 /* Name input wrapper hidden by default */
