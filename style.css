@@ -102,7 +102,7 @@ body {
 
 #logo a:hover {
   color: #E6E8FA;
-  text-shadow: 2px 2px 8px goldenrod;
+  text-shadow: 2px 2px 8px crimson;
   transform: translateY(-2px);
 }
 
@@ -244,9 +244,9 @@ body {
 #hr-main {
   border: none;
   height: 2px;
-  background: linear-gradient(to right, chocolate, sienna);
+  background: linear-gradient(to right, crimson, sienna);
   border-radius: 5px;
-  box-shadow: 0 0 5px chocolate, 0 0 10px sienna, 0 0 15px chocolate;
+  box-shadow: 0 0 5px crimson, 0 0 10px sienna, 0 0 15px crimson;
 
 }
 
@@ -271,7 +271,7 @@ body {
 #view-content-one h1 {
   font-family: 'Brush Script MT', cursive;
   font-size: clamp(2rem, 4vw, 3rem);
-  text-shadow: 1px 1px 16px chocolate;
+  text-shadow: 1px 1px 4px chocolate;
   /* Responsive font size */
   margin-bottom: 20px;
   text-align: center;
@@ -315,7 +315,7 @@ body {
   font-size: clamp(2rem, 4vw, 3rem);
   margin: 40px 0 20px 0;
   font-family: 'Brush Script MT', cursive;
-  text-shadow: 1px 1px 16px chocolate;
+  text-shadow: 1px 1px 4px chocolate;
 }
 
 #food-content {
@@ -371,6 +371,7 @@ body {
 }
 
 
+
 /* Culinary Section */
 #culinary {
   display: flex;
@@ -399,7 +400,7 @@ body {
 #culinary-content-two h1 {
   font-family: 'Brush Script MT', cursive;
   font-size: clamp(2rem, 4vw, 3rem);
-  text-shadow: 1px 1px 16px chocolate;
+  text-shadow: 1px 1px 4px chocolate;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -430,12 +431,13 @@ body {
 }
 
 
+
 /* Contact Section */
 #contact {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  padding: 40px 0;
+  /* padding: 40px 0; */
   justify-content: center;
   align-items: flex-start;
   background-color: bisque;
@@ -455,7 +457,7 @@ body {
   font-family: 'Brush Script MT', cursive;
   font-size: clamp(1.5rem, 4vw, 2rem);
   margin-bottom: 15px;
-  text-shadow: 1px 1px 16px chocolate;
+  text-shadow: 1px 1px 4px chocolate;
 }
 
 #timing p,
@@ -489,6 +491,7 @@ body {
     padding: 15px;
   }
 }
+
 
 
 /* Footer Section */
@@ -691,6 +694,11 @@ body {
 }
 
 
+
+
+
+
+
 /* Reservation Section */
 #reservation {
   background-color: bisque;
@@ -715,7 +723,7 @@ body {
   font-size: 40px;
   text-align: center;
   margin-bottom: 30px;
-  text-shadow: 1px 1px 16px chocolate;
+  text-shadow: 1px 1px 4px chocolate;
 }
 
 #reservation form {
@@ -740,19 +748,23 @@ body {
   padding: 10px 12px;
 }
 
-#reserve-btn {
-  background-color: rgb(97, 48, 13);
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  border: 1px solid chocolate;
+
+#reserve-btn  {
+  padding: 15px 30px;
+  border-radius: 50%;
+  font-weight: 600;
+  background: linear-gradient(to right, #d4af37, #f4d47f);
+  color: #272523;
+  border: none;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 #reserve-btn:hover {
-  background-color: bisque;
-  color: rgb(97, 48, 13);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(to right, #f4d47f, #d4af37);
 }
 
 /* Responsive adjustments */
@@ -780,13 +792,22 @@ body {
   }
 }
 
+
+
+
+
+
 /* menu page */
 /* Menu Gallery */
+
+#outer-div{
+  background-color: bisque;
+}
 
 #menu-gallery {
   width: 100%;
   margin: auto;
-  background-color: bisque;
+  /* background-color: bisque; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -821,7 +842,7 @@ body {
 
 .menu-item h2 {
   font-family: 'brush script mt';
-  color: chocolate;
+  color: crimson;
   font-size: 28px;
   margin-bottom: 10px;
 }
@@ -835,7 +856,7 @@ body {
 
 .price {
   display: block;
-  background-color: chocolate;
+  background-color: crimson;
   color: white;
   padding: 6px 12px;
   border-radius: 15px;
@@ -875,7 +896,7 @@ body {
   font-family: 'brush script mt';
   font-size: 40px;
   color: #3e2723;
-  text-shadow: 1px 1px 16px chocolate;
+  text-shadow: 1px 1px 4px chocolate;
   margin-bottom: 30px;
 }
 
@@ -917,7 +938,7 @@ body {
   font-family: 'brush script mt';
   font-size: 40px;
   color: #3e2723;
-  text-shadow: 1px 1px 16px chocolate;
+  text-shadow: 1px 1px 4px chocolate;
   margin-bottom: 10px;
 }
 
@@ -1092,7 +1113,6 @@ body {
   font-family: 'brush script mt';
   text-shadow: 1px 1px 16px chocolate;
   font-size: 40px;
-  position: relative;
   padding-bottom: 15px;
 }
 
@@ -1431,8 +1451,7 @@ body {
   z-index: 99;
   border: none;
   outline: none;
-  background: Chocolate;
-  /* Golden color */
+  background: crimson;
   color: white;
   cursor: pointer;
   padding: 12px 18px;
@@ -1445,7 +1464,7 @@ body {
 #goTopBtn:hover {
   background: white;
   /* Darker gold */
-  color: chocolate;
+  color: crimson;
   transform: scale(1.1);
 }
 

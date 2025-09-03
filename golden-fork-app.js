@@ -14,17 +14,17 @@ function addToCart(name, price, imagePath) {
   let existing = cart.find(item => item.name === name);
 
   if (existing) {
-  existing.quantity += 1;
-  showPopup("Already Added...");
-} else {
-  cart.push({
-    name: name,
-    price: price,
-    quantity: 1,
-    image: imagePath
-  });
-  showPopup("Item Added Successfully...");
-}
+    existing.quantity += 1;
+    showPopup("Already Added...");
+  } else {
+    cart.push({
+      name: name,
+      price: price,
+      quantity: 1,
+      image: imagePath
+    });
+    showPopup("Item Added Successfully...");
+  }
 
   localStorage.setItem("cart", JSON.stringify(cart));
   const messageSpan = document.getElementById("cartMessage");
@@ -70,7 +70,7 @@ function loadCart() {
     let cartItem = document.createElement("div");
     cartItem.classList.add("cart-item");
 
-   cartItem.innerHTML = `
+    cartItem.innerHTML = `
       <img src="${item.image}" alt="${item.name}" class="cart-item-img">
       <span class="cart-item-name">${item.name}</span>
       <span class="cart-item-price">₹${item.price}</span>
@@ -119,7 +119,14 @@ function removeItem(index) {
 // Checkout / Place Order
 function checkoutCart() {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let user = JSON.parse(localStorage.getItem("GF_USER"));
   const messageSpan = document.getElementById("cartMessage");
+
+  if (!user) {
+    messageSpan.style.color = "red";
+    messageSpan.textContent = "Please login to place your order..!";
+    return;
+  }
 
   if (cart.length === 0) {
     messageSpan.style.color = "red";
@@ -127,9 +134,12 @@ function checkoutCart() {
     return;
   }
 
-  messageSpan.style.color = "green";
-  messageSpan.textContent = "Thank you for your order! 🎉";
-  
+  else {
+    messageSpan.style.color = "green";
+    messageSpan.textContent = "Thank you for your order! 🎉";
+  }
+
+
   // Clear cart
   localStorage.removeItem("cart");
   loadCart();
@@ -303,7 +313,6 @@ function updateNavbarAuth() {
       e.preventDefault();
       localStorage.removeItem('GF_USER');
       updateNavbarAuth();
-      alert('You have been logged out.');
       window.location.reload();
     });
   } else {
@@ -318,7 +327,7 @@ document.addEventListener('DOMContentLoaded', updateNavbarAuth);
 
 // go to top button
 // Show button when user scrolls down
-window.onscroll = function() { scrollFunction() };
+window.onscroll = function () { scrollFunction() };
 
 function scrollFunction() {
   const goTopBtn = document.getElementById("goTopBtn");
